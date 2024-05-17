@@ -23,7 +23,7 @@ Get the image:
 docker pull jdoconnell/h2:latest
 ```
 
-Run as a service, exposing ports 1521 (TCP database server) and 81 (web interface) and mapping DATA_DIR to host:
+Run as a service, exposing ports 9092 (TCP database server) and 8082 (web interface) and mapping DATA_DIR to host:
 ```bash
 docker run -d -p 9092:9092 -p 8082:8082 -v /path/to/local/h2-data:/h2-data --name=myH2Server jdoconnell/h2
 ```
@@ -34,7 +34,7 @@ services:
   db:
     image: "jdoconnell/h2:latest"
     ports:
-      - 1521:1521
+      - 9092:9092
     volumes:
       - h2-data:/opt/h2-data
 volumes:
