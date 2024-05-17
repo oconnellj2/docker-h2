@@ -8,7 +8,7 @@ Dockerized H2 database for ARM-64 architechtures.
 - Using `openjdk:20`.
 - Only packing H2 jar-file into Docker image (retrieved from Maven Central).
 - H2-DATA location on `/h2-data`.
-- Exposing default ports `1521:1521`.
+- Exposing default ports `8082` / `9092`.
 
 ## Trusted Builds
 
@@ -20,12 +20,12 @@ Dockerized H2 database for ARM-64 architechtures.
 
 Get the image:
 ```bash
-docker pull jdoconnell/h2
+docker pull jdoconnell/h2:latest
 ```
 
 Run as a service, exposing ports 1521 (TCP database server) and 81 (web interface) and mapping DATA_DIR to host:
 ```bash
-docker run -d -p 1521:1521 -p 81:81 -v /path/to/local/data_dir:/opt/h2-data --name=MyH2Instance jdoconnell/h2
+docker run -d -p 9092:9092 -p 8082:8082 -v /path/to/local/h2-data:/h2-data --name=myH2Server jdoconnell/h2
 ```
 
 compose.yaml:
